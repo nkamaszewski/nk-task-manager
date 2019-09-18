@@ -5,14 +5,15 @@ import createSagaMiddleware from "redux-saga";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { rootSaga } from "./rootSaga";
+import { rootSaga } from "./store/saga/rootSaga";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import list from "./store/reducers/list";
 
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const reducer = combineReducers({} as any);
+const reducer = combineReducers({ list } as any);
 
 const sagaMiddleware = createSagaMiddleware();
 
