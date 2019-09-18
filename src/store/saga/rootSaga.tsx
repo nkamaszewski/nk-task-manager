@@ -1,7 +1,6 @@
-// import { getDataSaga } from './sagas';
+import { getListSaga } from "./sagas";
+import { all } from "@redux-saga/core/effects";
 
 export function* rootSaga() {
-  yield [
-    // getDataSaga
-  ];
+  yield all([getListSaga()]);
 }

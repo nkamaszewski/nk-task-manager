@@ -1,1 +1,3 @@
-export const GET_USER = "GET_USER";
+export const FETCH_TODOS_LIST = "FETCH_TODOS_LIST";
+export const FETCH_LIST_SUCCESS = "FETCH_LIST_SUCCESS";
+export const FETCH_LIST_FAILED = "FETCH_LIST_FAILED";

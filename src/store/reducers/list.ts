@@ -4,12 +4,12 @@ const initialState = {
   list: []
 };
 
-const setUser = (state: any) => ({ ...state });
+const getTodosList = (state: any, { list }: any) => ({ ...state, list });
 
 const reducer = (state = initialState, action: { type: string }) => {
   switch (action.type) {
-    case actionTypes.GET_USER:
-      return setUser(state);
+    case actionTypes.FETCH_LIST_SUCCESS:
+      return getTodosList(state, action as any);
     default:
       return state;
   }

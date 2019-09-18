@@ -23,6 +23,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
+
 const app = (
   <Provider store={store}>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
