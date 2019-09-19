@@ -4,6 +4,7 @@ import DashboardStyle from "../../styles/DashboardStyle";
 import { connect } from "react-redux";
 import { fetchTodosList } from "../../store/actions/list";
 import List from "./List";
+import HeaderList from "./HeaderList";
 
 interface Props {
   list: any;
@@ -17,6 +18,7 @@ const ListPage = ({ onFetchTodosList }: Props) => {
 
   return (
     <DashboardStyle>
+      <HeaderList />
       <List />
       <Footer />
     </DashboardStyle>

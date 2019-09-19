@@ -1,6 +1,7 @@
 import React from "react";
 import { Todo } from "../../types/types";
 import RowStyle from "../../styles/RowStyle";
+import { FaCheckSquare, FaTrashAlt } from "react-icons/fa";
 
 interface Props {
   item: Todo;
@@ -8,9 +9,16 @@ interface Props {
 
 const Row = ({ item: { completed, title } }: Props) => {
   return (
-    <RowStyle>
-      <p>{completed}</p>
-      <p>{title}</p>
+    <RowStyle completed={completed}>
+      <p>
+        {completed ? (
+          <FaCheckSquare color="green" />
+        ) : (
+          <FaCheckSquare color="gray" />
+        )}
+      </p>
+      <p className="title">{title}</p>
+      {completed && <FaTrashAlt className="trash" />}
     </RowStyle>
   );
 };
