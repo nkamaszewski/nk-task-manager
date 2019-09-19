@@ -19,7 +19,7 @@ const UserSelector = ({ selectedUserId, setSelectedUserId }: Props) => {
             type="radio"
             value={id}
             checked={id === selectedUserId}
-            onClick={() => setSelectedUserId(id)}
+            onChange={() => setSelectedUserId(id)}
           />
           {`${name} (userId: ${id})`}
         </label>
