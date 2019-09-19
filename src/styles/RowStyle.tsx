@@ -13,8 +13,13 @@ const RowStyle: any = styled.div`
       completed ? "line-through" : "none"};
   }
 
-  .trash {
+  .icon {
     align-self: center;
+  }
+
+  .icon:hover,
+  .title:hover {
+    cursor: pointer;
   }
 `;
 export default RowStyle;

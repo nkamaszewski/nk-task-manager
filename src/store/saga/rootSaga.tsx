@@ -1,6 +1,6 @@
-import { getListSaga } from "./sagas";
+import { getListSaga, deleteItemSaga } from "./sagas";
 import { all } from "@redux-saga/core/effects";
 
 export function* rootSaga() {
-  yield all([getListSaga()]);
+  yield all([getListSaga(), deleteItemSaga()]);
 }
