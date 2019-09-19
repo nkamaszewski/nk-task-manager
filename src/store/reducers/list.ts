@@ -10,8 +10,17 @@ const getTodosList = (state: any, { list }: any) => ({ ...state, list });
 
 const deleteItem = (state: any, { id }: any) => {
   const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
-  console.log(newList);
-  console.log(id);
+  return { ...state, list: newList };
+};
+
+const changeItem = (state: any, { item }: any) => {
+  let newList = deepCopy(state.list);
+  const index = newList.findIndex((todo: Todo) => todo.id === item.id);
+
+  if (index !== -1) {
+    newList[index] = item;
+  }
+
   return { ...state, list: newList };
 };
 
@@ -21,6 +30,8 @@ const reducer = (state = initialState, action: any) => {
       return getTodosList(state, action as any);
     case actionTypes.DELETE_ITEM_SUCCESS:
       return deleteItem(state, action as any);
+    case actionTypes.CHANGE_ITEM_SUCCESS:
+      return changeItem(state, action as any);
     default:
       return state;
   }

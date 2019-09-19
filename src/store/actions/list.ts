@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import { Todo } from "../../types/types";
 
 const fetchTodosList = () => ({
   type: actionTypes.FETCH_TODOS_LIST
@@ -24,10 +25,22 @@ const deleteItemSuccess = (id: number) => ({
   id
 });
 
+const changeItem = (item: Todo) => ({
+  type: actionTypes.CHANGE_ITEM,
+  item
+});
+
+const changeItemSuccess = (item: Todo) => ({
+  type: actionTypes.CHANGE_ITEM_SUCCESS,
+  item
+});
+
 export {
   fetchTodosList,
   fetchListSuccess,
   failedRequest,
   deleteItem,
-  deleteItemSuccess
+  deleteItemSuccess,
+  changeItem,
+  changeItemSuccess
 };
