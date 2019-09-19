@@ -3,6 +3,7 @@ import { Footer } from "../Footer";
 import DashboardStyle from "../../styles/DashboardStyle";
 import { connect } from "react-redux";
 import { fetchTodosList } from "../../store/actions/list";
+import List from "./List";
 
 interface Props {
   list: any;
@@ -11,12 +12,12 @@ interface Props {
 
 const ListPage = ({ onFetchTodosList }: Props) => {
   useEffect(() => {
-    console.log("listPage effect");
     onFetchTodosList();
   }, [onFetchTodosList]);
 
   return (
     <DashboardStyle>
+      <List />
       <Footer />
     </DashboardStyle>
   );

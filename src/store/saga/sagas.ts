@@ -6,7 +6,10 @@ export function* getList() {
   try {
     const response = yield fetch("https://jsonplaceholder.typicode.com/todos");
     const data = yield response.json();
-    yield put(fetchListSuccess(data));
+
+    const slicedData = data.slice(0, 10);
+
+    yield put(fetchListSuccess(slicedData));
   } catch (e) {
     yield put(fetchListFailed(e));
   }
