@@ -1,8 +1,9 @@
 import * as actionTypes from "./actionTypes";
 import { Todo } from "../../types/types";
 
-const fetchTodosList = () => ({
-  type: actionTypes.FETCH_TODOS_LIST
+const fetchTodosList = (userId: string) => ({
+  type: actionTypes.FETCH_TODOS_LIST,
+  userId
 });
 
 const fetchListSuccess = (list: any) => ({
@@ -35,6 +36,16 @@ const changeItemSuccess = (item: Todo) => ({
   item
 });
 
+const addItem = (item: Todo) => ({
+  type: actionTypes.ADD_ITEM,
+  item
+});
+
+const addItemSuccess = (item: Todo) => ({
+  type: actionTypes.ADD_ITEM_SUCCESS,
+  item
+});
+
 export {
   fetchTodosList,
   fetchListSuccess,
@@ -42,5 +53,7 @@ export {
   deleteItem,
   deleteItemSuccess,
   changeItem,
-  changeItemSuccess
+  changeItemSuccess,
+  addItem,
+  addItemSuccess
 };

@@ -5,16 +5,22 @@ import { connect } from "react-redux";
 import { fetchTodosList } from "../../store/actions/list";
 import List from "./List";
 import HeaderList from "./HeaderList";
+import { withRouter } from "react-router";
 
 interface Props {
-  list: any;
   onFetchTodosList: Function;
+  match: { params: { userId: string } };
 }
 
-const ListPage = ({ onFetchTodosList }: Props) => {
+const ListPage = ({
+  onFetchTodosList,
+  match: {
+    params: { userId }
+  }
+}: Props) => {
   useEffect(() => {
-    onFetchTodosList();
-  }, [onFetchTodosList]);
+    onFetchTodosList(userId);
+  }, [onFetchTodosList, userId]);
 
   return (
     <DashboardStyle>
@@ -25,15 +31,11 @@ const ListPage = ({ onFetchTodosList }: Props) => {
   );
 };
 
-const mapStateToProps = ({ list: { list } }: any) => ({
-  list
-});
-
 const mapDispatchToProps = (dispatch: any) => ({
-  onFetchTodosList: () => dispatch(fetchTodosList())
+  onFetchTodosList: (userId: string) => dispatch(fetchTodosList(userId))
 });
 
-export default connect(
-  mapStateToProps,
+export default withRouter(connect(
+  null,
   mapDispatchToProps
-)(ListPage);
+)(ListPage) as any);

@@ -8,7 +8,7 @@ const ButtonStyle: any = styled.div`
     transition: background-color 2s ease;
     background-color: white;
     color: #282c34;
-    font-size: 48px;
+    font-size: 42px;
     display: flex;
     justify-content: center;
   }

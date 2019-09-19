@@ -24,6 +24,13 @@ const changeItem = (state: any, { item }: any) => {
   return { ...state, list: newList };
 };
 
+const addItem = (state: any, { item }: any) => {
+  const newList = deepCopy(state.list);
+  newList.push(item);
+
+  return { ...state, list: newList };
+};
+
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionTypes.FETCH_LIST_SUCCESS:
@@ -32,6 +39,8 @@ const reducer = (state = initialState, action: any) => {
       return deleteItem(state, action as any);
     case actionTypes.CHANGE_ITEM_SUCCESS:
       return changeItem(state, action as any);
+    case actionTypes.ADD_ITEM_SUCCESS:
+      return addItem(state, action as any);
     default:
       return state;
   }

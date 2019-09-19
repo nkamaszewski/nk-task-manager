@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <Switch>
       <Route path="/start" exact children={<StartPage />} />
-      <Route path="/list" exact children={<ListPage />} />
+      <Route path="/list/:userId" exact children={<ListPage />} />
       <Redirect to="/start" />
     </Switch>
   );

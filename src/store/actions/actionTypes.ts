@@ -8,3 +8,6 @@ export const DELETE_ITEM_SUCCESS = "DELETE_ITEM_SUCCESS";
 
 export const CHANGE_ITEM = "CHANGE_ITEM";
 export const CHANGE_ITEM_SUCCESS = "CHANGE_ITEM_SUCCESS";
+
+export const ADD_ITEM = "ADD_ITEM";
+export const ADD_ITEM_SUCCESS = "ADD_ITEM_SUCCESS";
