@@ -1,15 +1,20 @@
-import { failedRequest, changeItemSuccess } from "../../actions/list";
+import {
+  failedRequest,
+  changeItemSuccess,
+  setListLoadingStatus
+} from "../../actions/list";
 import * as actionTypes from "../../actions//actionTypes";
 import { put, takeEvery } from "@redux-saga/core/effects";
 
 function* changeItem(action: any) {
+  yield put(setListLoadingStatus(true));
   try {
     // cause jsonplaceholder API is fake, when new added item will be trying to change,
     // on server will be send fake item's id (id that not real exist in jsonplaceholder),
     // and then always error will be occured.
     // In real api code below will be executed
 
-    // const response = yield fetch(
+    // const response = yield call(fetch,
     //   `https://jsonplaceholder.typicode.com/todos/${action.item.id}`,
     //   {
     //     method: "PUT",

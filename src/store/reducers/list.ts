@@ -2,15 +2,27 @@ import * as actionTypes from "../actions/actionTypes";
 import { deepCopy } from "../../helpers/deepCopy";
 import { Todo } from "../../types/types";
 
-const initialState = {
-  list: []
+interface State {
+  list: Todo[];
+  listLoading: boolean;
+  errorMessage: string;
+}
+
+const initialState: State = {
+  list: [],
+  listLoading: false,
+  errorMessage: ""
 };
 
-const getTodosList = (state: any, { list }: any) => ({ ...state, list });
+const getTodosList = (state: any, { list }: any) => ({
+  ...state,
+  list,
+  listLoading: false
+});
 
 const deleteItem = (state: any, { id }: any) => {
   const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
-  return { ...state, list: newList };
+  return { ...state, list: newList, listLoading: false };
 };
 
 const changeItem = (state: any, { item }: any) => {
@@ -21,15 +33,26 @@ const changeItem = (state: any, { item }: any) => {
     newList[index] = item;
   }
 
-  return { ...state, list: newList };
+  return { ...state, list: newList, listLoading: false };
 };
 
 const addItem = (state: any, { item }: any) => {
   const newList = deepCopy(state.list);
   newList.push(item);
 
-  return { ...state, list: newList };
+  return { ...state, list: newList, listLoading: false };
 };
+
+const setListLoadingStatus = (state: any, { listLoading }: any) => ({
+  ...state,
+  listLoading
+});
+
+const setErrorMessage = (state: any, { errorMessage }: any) => ({
+  ...state,
+  listLoading: false,
+  errorMessage
+});
 
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -41,6 +64,10 @@ const reducer = (state = initialState, action: any) => {
       return changeItem(state, action as any);
     case actionTypes.ADD_ITEM_SUCCESS:
       return addItem(state, action as any);
+    case actionTypes.SET_LIST_LOADING_STATUS:
+      return setListLoadingStatus(state, action as any);
+    case actionTypes.FAILED_REQUEST:
+      return setErrorMessage(state, action as any);
     default:
       return state;
   }

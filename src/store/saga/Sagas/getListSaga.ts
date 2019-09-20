@@ -1,10 +1,16 @@
-import { put, takeEvery } from "@redux-saga/core/effects";
+import { put, takeEvery, call } from "@redux-saga/core/effects";
 import * as actionTypes from "../../actions//actionTypes";
-import { fetchListSuccess, failedRequest } from "../../actions/list";
+import {
+  fetchListSuccess,
+  failedRequest,
+  setListLoadingStatus
+} from "../../actions/list";
 
 function* getList(action: any) {
+  yield put(setListLoadingStatus(true));
   try {
-    const response = yield fetch(
+    const response = yield call(
+      fetch,
       `https://jsonplaceholder.typicode.com/todos?userId=${action.userId}`
     );
     const data = yield response.json();

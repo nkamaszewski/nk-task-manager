@@ -1,10 +1,16 @@
-import { deleteItemSuccess, failedRequest } from "../../actions/list";
+import {
+  deleteItemSuccess,
+  failedRequest,
+  setListLoadingStatus
+} from "../../actions/list";
 import * as actionTypes from "../../actions//actionTypes";
-import { put, takeEvery } from "@redux-saga/core/effects";
+import { put, takeEvery, call } from "@redux-saga/core/effects";
 
 function* deleteItem(action: any) {
+  yield put(setListLoadingStatus(true));
   try {
-    const response = yield fetch(
+    const response = yield call(
+      fetch,
       `https://jsonplaceholder.typicode.com/todos/${action.id}`,
       {
         method: "DELETE"

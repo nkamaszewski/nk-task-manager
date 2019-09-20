@@ -46,6 +46,11 @@ const addItemSuccess = (item: Todo) => ({
   item
 });
 
+const setListLoadingStatus = (listLoading: boolean) => ({
+  type: actionTypes.SET_LIST_LOADING_STATUS,
+  listLoading
+});
+
 export {
   fetchTodosList,
   fetchListSuccess,
@@ -55,5 +60,6 @@ export {
   changeItem,
   changeItemSuccess,
   addItem,
-  addItemSuccess
+  addItemSuccess,
+  setListLoadingStatus
 };

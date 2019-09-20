@@ -22,15 +22,22 @@ const HeaderList = ({
   const [inputValue, setInputValue] = useState("");
 
   const addItem = () => {
-    onAddItem({ userId, title: inputValue, completed: false });
-    setInputValue("");
+    if (inputValue) {
+      onAddItem({ userId, title: inputValue, completed: false });
+      setInputValue("");
+    }
   };
 
   return (
     <HeaderListStyle>
       <FaPen className="pen" />
       <input
-        placeholder="What needs to be done?"
+        placeholder={
+          list && list.length >= 10
+            ? "Max size of todos achived (10) - delete completed tasks first"
+            : "What needs to be done?"
+        }
+        disabled={list && list.length >= 10}
         value={inputValue}
         onChange={(e: any) => setInputValue(e.target.value)}
         onBlur={addItem}

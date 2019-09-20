@@ -8,6 +8,8 @@ interface Props {
 }
 
 const List = ({ list }: Props) => {
+  console.log(list);
+
   return (
     <>
       {list.map((item: Todo) => (
