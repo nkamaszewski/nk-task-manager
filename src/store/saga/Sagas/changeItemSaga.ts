@@ -4,7 +4,8 @@ import {
   setListLoadingStatus
 } from "../../actions/list";
 import * as actionTypes from "../../actions//actionTypes";
-import { put, takeEvery } from "@redux-saga/core/effects";
+import { put, takeEvery, call } from "@redux-saga/core/effects";
+import { DEFAULT_ERROR_MESSAGE, API_ENDPOINT } from "../../../helpers/constans";
 
 function* changeItem(action: any) {
   yield put(setListLoadingStatus(true));
@@ -14,20 +15,17 @@ function* changeItem(action: any) {
     // and then always error will be occured.
     // In real api code below will be executed
 
-    // const response = yield call(fetch,
-    //   `https://jsonplaceholder.typicode.com/todos/${action.item.id}`,
-    //   {
-    //     method: "PUT",
-    //     body: JSON.stringify(action.item),
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8"
-    //     }
-    //   }
-    // );
-    // const data = yield response.json();
+    const response = yield call(fetch, `${API_ENDPOINT}/${action.item.id}`, {
+      method: "PUT",
+      body: JSON.stringify(action.item),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
+    const data = yield response.json();
     yield put(changeItemSuccess(action.item));
   } catch (e) {
-    yield put(failedRequest(e));
+    yield put(failedRequest(DEFAULT_ERROR_MESSAGE));
   }
 }
 

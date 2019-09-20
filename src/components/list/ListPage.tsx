@@ -13,6 +13,7 @@ interface Props {
   onFetchTodosList: Function;
   match: { params: { userId: string } };
   listLoading: boolean;
+  errorMessage: string;
 }
 
 const ListPage = ({
@@ -20,7 +21,8 @@ const ListPage = ({
   match: {
     params: { userId }
   },
-  listLoading
+  listLoading,
+  errorMessage
 }: Props) => {
   useEffect(() => {
     onFetchTodosList(userId);
@@ -28,23 +30,34 @@ const ListPage = ({
 
   return (
     <DashboardStyle>
-      <HeaderList />
-      <main>
-        {listLoading ? (
-          <div className="loader">
-            <Loader />
-          </div>
-        ) : (
-          <List />
-        )}
-      </main>
-      <Footer />
+      {errorMessage ? (
+        <p>{errorMessage}</p>
+      ) : (
+        <>
+          <HeaderList />
+          <main>
+            {listLoading ? (
+              <div className="loader">
+                <Loader />
+              </div>
+            ) : (
+              <List />
+            )}
+          </main>
+          <Footer />
+        </>
+      )}
     </DashboardStyle>
   );
 };
 
-const mapStateToProps = ({ list: { listLoading } }: { list: State }) => ({
-  listLoading
+const mapStateToProps = ({
+  list: { listLoading, errorMessage }
+}: {
+  list: State;
+}) => ({
+  listLoading,
+  errorMessage
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({

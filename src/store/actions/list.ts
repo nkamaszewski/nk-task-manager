@@ -11,9 +11,9 @@ const fetchListSuccess = (list: Todo[]) => ({
   list
 });
 
-const failedRequest = (error: any) => ({
+const failedRequest = (errorMessage: string) => ({
   type: actionTypes.FAILED_REQUEST,
-  error
+  errorMessage
 });
 
 const deleteItem = (id: number) => ({

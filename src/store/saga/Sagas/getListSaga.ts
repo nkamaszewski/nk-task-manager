@@ -5,19 +5,20 @@ import {
   failedRequest,
   setListLoadingStatus
 } from "../../actions/list";
+import { DEFAULT_ERROR_MESSAGE, API_ENDPOINT } from "../../../helpers/constans";
 
 function* getList(action: any) {
   yield put(setListLoadingStatus(true));
   try {
     const response = yield call(
       fetch,
-      `https://jsonplaceholder.typicode.com/todos?userId=${action.userId}`
+      `${API_ENDPOINT}?userId=${action.userId}`
     );
     const data = yield response.json();
     const slicedData = data.slice(0, 10);
     yield put(fetchListSuccess(slicedData));
   } catch (e) {
-    yield put(failedRequest(e));
+    yield put(failedRequest(DEFAULT_ERROR_MESSAGE));
   }
 }
 

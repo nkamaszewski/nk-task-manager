@@ -11,12 +11,13 @@ const initialState: State = {
 const getTodosList = (state: State, { list }: any) => ({
   ...state,
   list,
-  listLoading: false
+  listLoading: false,
+  errorMessage: ""
 });
 
 const deleteItem = (state: State, { id }: any) => {
   const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
-  return { ...state, list: newList, listLoading: false };
+  return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
 const changeItem = (state: State, { item }: any) => {
@@ -27,19 +28,20 @@ const changeItem = (state: State, { item }: any) => {
     newList[index] = item;
   }
 
-  return { ...state, list: newList, listLoading: false };
+  return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
 const addItem = (state: State, { item }: any) => {
   const newList = deepCopy(state.list);
   newList.push(item);
 
-  return { ...state, list: newList, listLoading: false };
+  return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
 const setListLoadingStatus = (state: State, { listLoading }: any) => ({
   ...state,
-  listLoading
+  listLoading,
+  errorMessage: ""
 });
 
 const setErrorMessage = (state: State, { errorMessage }: any) => ({
