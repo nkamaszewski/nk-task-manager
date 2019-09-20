@@ -8,19 +8,19 @@ const initialState: State = {
   errorMessage: ""
 };
 
-const getTodosList = (state: State, { list }: any) => ({
+const getTodosList = (state: State, { list }: { list: Todo[] }) => ({
   ...state,
   list,
   listLoading: false,
   errorMessage: ""
 });
 
-const deleteItem = (state: State, { id }: any) => {
+const deleteItem = (state: State, { id }: { id: number }) => {
   const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
   return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
-const changeItem = (state: State, { item }: any) => {
+const changeItem = (state: State, { item }: { item: Todo }) => {
   let newList = deepCopy(state.list);
   const index = newList.findIndex((todo: Todo) => todo.id === item.id);
 
@@ -31,20 +31,26 @@ const changeItem = (state: State, { item }: any) => {
   return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
-const addItem = (state: State, { item }: any) => {
+const addItem = (state: State, { item }: { item: Todo }) => {
   const newList = deepCopy(state.list);
   newList.push(item);
 
   return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
-const setListLoadingStatus = (state: State, { listLoading }: any) => ({
+const setListLoadingStatus = (
+  state: State,
+  { listLoading }: { listLoading: boolean }
+) => ({
   ...state,
   listLoading,
   errorMessage: ""
 });
 
-const setErrorMessage = (state: State, { errorMessage }: any) => ({
+const setErrorMessage = (
+  state: State,
+  { errorMessage }: { errorMessage: string }
+) => ({
   ...state,
   listLoading: false,
   errorMessage
@@ -53,17 +59,17 @@ const setErrorMessage = (state: State, { errorMessage }: any) => ({
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionTypes.FETCH_LIST_SUCCESS:
-      return getTodosList(state, action as any);
+      return getTodosList(state, action);
     case actionTypes.DELETE_ITEM_SUCCESS:
-      return deleteItem(state, action as any);
+      return deleteItem(state, action);
     case actionTypes.CHANGE_ITEM_SUCCESS:
-      return changeItem(state, action as any);
+      return changeItem(state, action);
     case actionTypes.ADD_ITEM_SUCCESS:
-      return addItem(state, action as any);
+      return addItem(state, action);
     case actionTypes.SET_LIST_LOADING_STATUS:
-      return setListLoadingStatus(state, action as any);
+      return setListLoadingStatus(state, action);
     case actionTypes.FAILED_REQUEST:
-      return setErrorMessage(state, action as any);
+      return setErrorMessage(state, action);
     default:
       return state;
   }
