@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserSelector renders correctly 1`] = `
+<div
+  className="sc-bdVaJa jdJPjS"
+>
+  <p
+    className="title"
+  >
+    Select mock user:
+  </p>
+  <label
+    className="Alice"
+    title="userId: 1"
+  >
+    <input
+      checked={false}
+      className="radio"
+      onChange={[Function]}
+      type="radio"
+      value={1}
+    />
+    Alice
+  </label>
+  <label
+    className="Bob"
+    title="userId: 2"
+  >
+    <input
+      checked={false}
+      className="radio"
+      onChange={[Function]}
+      type="radio"
+      value={2}
+    />
+    Bob
+  </label>
+  <label
+    className="Frank"
+    title="userId: 3"
+  >
+    <input
+      checked={false}
+      className="radio"
+      onChange={[Function]}
+      type="radio"
+      value={3}
+    />
+    Frank
+  </label>
+</div>
+`;
