@@ -4,7 +4,7 @@ import { FaPen } from "react-icons/fa";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { addItem } from "../../store/actions/list";
-import { Todo } from "../../types/types";
+import { Todo, State } from "../../types/types";
 
 interface Props {
   list: Todo[];
@@ -55,11 +55,11 @@ const HeaderList = ({
   );
 };
 
-const mapStateToProps = ({ list: { list } }: any) => ({
+const mapStateToProps = ({ list: { list } }: { list: State }) => ({
   list
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onAddItem: (item: Todo) => dispatch(addItem(item))
 });
 

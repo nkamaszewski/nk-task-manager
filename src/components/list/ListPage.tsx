@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Footer } from "../Footer";
 import DashboardStyle from "../../styles/DashboardStyle";
 import { connect } from "react-redux";
 import { fetchTodosList } from "../../store/actions/list";
@@ -7,6 +6,8 @@ import List from "./List";
 import HeaderList from "./HeaderList";
 import { withRouter } from "react-router";
 import Loader from "../Loader";
+import { State } from "../../types/types";
+import Footer from "../Footer";
 
 interface Props {
   onFetchTodosList: Function;
@@ -42,11 +43,11 @@ const ListPage = ({
   );
 };
 
-const mapStateToProps = ({ list: { listLoading } }: any) => ({
+const mapStateToProps = ({ list: { listLoading } }: { list: State }) => ({
   listLoading
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onFetchTodosList: (userId: string) => dispatch(fetchTodosList(userId))
 });
 

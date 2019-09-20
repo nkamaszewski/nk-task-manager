@@ -6,7 +6,7 @@ const fetchTodosList = (userId: string) => ({
   userId
 });
 
-const fetchListSuccess = (list: any) => ({
+const fetchListSuccess = (list: Todo[]) => ({
   type: actionTypes.FETCH_LIST_SUCCESS,
   list
 });

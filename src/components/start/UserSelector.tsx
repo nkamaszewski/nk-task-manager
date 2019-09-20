@@ -11,9 +11,9 @@ interface Props {
 const UserSelector = ({ selectedUserId, setSelectedUserId }: Props) => {
   return (
     <UserSelectorStyle>
-      <h4>Select mock user:</h4>
+      <p className="title">Select mock user:</p>
       {USERS.map(({ name, id }: User) => (
-        <label key={id}>
+        <label key={id} className={name} title={`userId: ${id}`}>
           <input
             className="radio"
             type="radio"
@@ -21,7 +21,7 @@ const UserSelector = ({ selectedUserId, setSelectedUserId }: Props) => {
             checked={id === selectedUserId}
             onChange={() => setSelectedUserId(id)}
           />
-          {`${name} (userId: ${id})`}
+          {`${name}`}
         </label>
       ))}
     </UserSelectorStyle>

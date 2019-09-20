@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonStyle: any = styled.div`
+const ButtonStyle = styled.div`
   .btn {
     border-radius: 50%;
     width: 150px;

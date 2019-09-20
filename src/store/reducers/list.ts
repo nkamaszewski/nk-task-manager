@@ -1,12 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 import { deepCopy } from "../../helpers/deepCopy";
-import { Todo } from "../../types/types";
-
-interface State {
-  list: Todo[];
-  listLoading: boolean;
-  errorMessage: string;
-}
+import { Todo, State } from "../../types/types";
 
 const initialState: State = {
   list: [],
@@ -14,18 +8,18 @@ const initialState: State = {
   errorMessage: ""
 };
 
-const getTodosList = (state: any, { list }: any) => ({
+const getTodosList = (state: State, { list }: any) => ({
   ...state,
   list,
   listLoading: false
 });
 
-const deleteItem = (state: any, { id }: any) => {
+const deleteItem = (state: State, { id }: any) => {
   const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
   return { ...state, list: newList, listLoading: false };
 };
 
-const changeItem = (state: any, { item }: any) => {
+const changeItem = (state: State, { item }: any) => {
   let newList = deepCopy(state.list);
   const index = newList.findIndex((todo: Todo) => todo.id === item.id);
 
@@ -36,19 +30,19 @@ const changeItem = (state: any, { item }: any) => {
   return { ...state, list: newList, listLoading: false };
 };
 
-const addItem = (state: any, { item }: any) => {
+const addItem = (state: State, { item }: any) => {
   const newList = deepCopy(state.list);
   newList.push(item);
 
   return { ...state, list: newList, listLoading: false };
 };
 
-const setListLoadingStatus = (state: any, { listLoading }: any) => ({
+const setListLoadingStatus = (state: State, { listLoading }: any) => ({
   ...state,
   listLoading
 });
 
-const setErrorMessage = (state: any, { errorMessage }: any) => ({
+const setErrorMessage = (state: State, { errorMessage }: any) => ({
   ...state,
   listLoading: false,
   errorMessage

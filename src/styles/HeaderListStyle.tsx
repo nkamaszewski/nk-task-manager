@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderListStyle: any = styled.div`
+const HeaderListStyle = styled.div`
   margin-top: 30px;
   display: flex;
   border-bottom: 2px solid gray;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Todo } from "../../types/types";
+import { Todo, State } from "../../types/types";
 import { connect } from "react-redux";
 import Row from "./Row";
 
@@ -17,7 +17,7 @@ const List = ({ list }: Props) => {
   );
 };
 
-const mapStateToProps = ({ list: { list } }: any) => ({
+const mapStateToProps = ({ list: { list } }: { list: State }) => ({
   list
 });
 

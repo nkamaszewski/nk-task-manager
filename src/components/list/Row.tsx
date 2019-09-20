@@ -31,13 +31,17 @@ const Row = ({
         {title}
       </p>
       {completed && (
-        <FaTrashAlt className="icon" onClick={() => onDeleteItem(id)} />
+        <FaTrashAlt
+          className="icon"
+          onClick={() => onDeleteItem(id)}
+          title="delete task"
+        />
       )}
     </RowStyle>
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   onDeleteItem: (id: number) => dispatch(deleteItem(id)),
   onChangeItem: (item: Todo) => dispatch(changeItem(item))
 });

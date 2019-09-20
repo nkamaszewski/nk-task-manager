@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoaderStyle: any = styled.div`
+const LoaderStyle = styled.div`
   color: official;
   display: inline-block;
   position: relative;

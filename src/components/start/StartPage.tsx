@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Footer } from "../Footer";
-import { Button } from "../Button";
 import { withRouter } from "react-router";
 import { History } from "history";
 import DashboardStyle from "../../styles/DashboardStyle";
 import { USERS } from "../../helpers/constans";
 import UserSelector from "./UserSelector";
+import Button from "../Button";
+import Footer from "../Footer";
 
 interface Props {
   history: History;

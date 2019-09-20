@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const UserSelectorStyle: any = styled.div`
+const UserSelectorStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,22 @@ const UserSelectorStyle: any = styled.div`
     width: 16px;
     height: 16px;
     color: red;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .Alice {
+    color: pink;
+  }
+
+  .Bob {
+    color: lightblue;
+  }
+
+  .Frank {
+    color: yellowgreen;
   }
 `;
 export default UserSelectorStyle;

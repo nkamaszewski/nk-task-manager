@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RowStyle: any = styled.div`
+const RowStyle = styled.div`
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   font-size: 16px;

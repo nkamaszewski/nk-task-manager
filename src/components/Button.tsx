@@ -6,10 +6,12 @@ interface Props {
   clickAction: Function;
 }
 
-export const Button = ({ label, clickAction }: Props) => (
+const Button = ({ label, clickAction }: Props) => (
   <ButtonStyle>
     <div className="btn" onClick={() => clickAction()}>
       <p>{label}</p>
     </div>
   </ButtonStyle>
 );
+
+export default Button;
