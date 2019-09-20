@@ -9,5 +9,16 @@ const DashboardStyle: any = styled.div`
   justify-content: center;
   font-size: 16px;
   color: white;
+
+  main {
+    height: 550px;
+  }
+
+  .loader {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 export default DashboardStyle;

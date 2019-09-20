@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const HeaderListStyle: any = styled.div`
+  margin-top: 30px;
   display: flex;
   border-bottom: 2px solid gray;
 
@@ -13,7 +14,7 @@ const HeaderListStyle: any = styled.div`
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #282c34;
-    font-size: 22px;
+    font-size: 18px;
     color: white;
     outline: none;
     margin: 0;

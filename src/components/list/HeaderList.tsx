@@ -28,6 +28,14 @@ const HeaderList = ({
     }
   };
 
+  const onKeyDownHandler = (e: any) => {
+    if (e.key === "Escape") {
+      setInputValue("");
+    } else if (e.key === "Enter") {
+      addItem();
+    }
+  };
+
   return (
     <HeaderListStyle>
       <FaPen className="pen" />
@@ -35,12 +43,13 @@ const HeaderList = ({
         placeholder={
           list && list.length >= 10
             ? "Max size of todos achived (10) - delete completed tasks first"
-            : "What needs to be done?"
+            : "What needs to be done? - start typing"
         }
         disabled={list && list.length >= 10}
         value={inputValue}
         onChange={(e: any) => setInputValue(e.target.value)}
         onBlur={addItem}
+        onKeyDown={onKeyDownHandler}
       />
     </HeaderListStyle>
   );

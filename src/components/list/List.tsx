@@ -8,12 +8,10 @@ interface Props {
 }
 
 const List = ({ list }: Props) => {
-  console.log(list);
-
   return (
     <>
       {list.map((item: Todo) => (
-        <Row key={item.id} item={item} />
+        <Row key={item.id + item.title} item={item} />
       ))}
     </>
   );
