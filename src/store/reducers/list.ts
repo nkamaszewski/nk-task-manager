@@ -1,5 +1,4 @@
 import * as actionTypes from "../actions/actionTypes";
-import { deepCopy } from "../../helpers/deepCopy";
 import { Todo, State } from "../../types/types";
 
 const initialState: State = {
@@ -16,12 +15,12 @@ const getTodosList = (state: State, { list }: { list: Todo[] }) => ({
 });
 
 const deleteItem = (state: State, { id }: { id: number }) => {
-  const newList = deepCopy(state.list).filter((item: Todo) => item.id !== id);
+  const newList = state.list.filter((item: Todo) => item.id !== id);
   return { ...state, list: newList, listLoading: false, errorMessage: "" };
 };
 
 const changeItem = (state: State, { item }: { item: Todo }) => {
-  let newList = deepCopy(state.list);
+  let newList = [...state.list];
   const index = newList.findIndex((todo: Todo) => todo.id === item.id);
 
   if (index !== -1) {
@@ -32,7 +31,7 @@ const changeItem = (state: State, { item }: { item: Todo }) => {
 };
 
 const addItem = (state: State, { item }: { item: Todo }) => {
-  const newList = deepCopy(state.list);
+  const newList = [...state.list];
   newList.push(item);
 
   return { ...state, list: newList, listLoading: false, errorMessage: "" };
